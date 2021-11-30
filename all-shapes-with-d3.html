@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+</head>
+<body>
+	<svg id="canvas" width="400" height="60" style="border: 1px solid;">
+		<!-- "x" and "y" coordinates give a shape its position (top left hand corner) -->
+		<!-- <rect x="0" y="0" width="50" height="50" fill="green"></rect> -->
+		<!-- For circles, choose the center with "cx" and "cy", and the radius with "r" -->
+		<!-- <circle cx="90" cy="25" r="25" fill="red"></circle> -->
+		<!-- Ellipses are similar, but they take "ry" and "rx" attributes -->
+		<!-- <ellipse cx="145" cy="25" rx="15" ry="25" fill="grey"></ellipse> -->
+		<!-- Lines need two pairs of coordinates and a stroke width -->
+		<!-- <line x1="185" y1="5" x2="230" y2="40" stroke="blue" stroke-width="5"></line> -->
+		<!-- Text takes an x/y coordinate and a font size -->
+		<!-- <text x="260" y="25" font-size="20px" fill="orange">Hello World</text> -->
+	</svg>
+
+	<!-- External JS libraries -->
+	<script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <script>
+        const svg = d3.select('#canvas')
+
+        const rect = svg.append('rect')
+        rect.attr('x', 0)
+            .attr('y', 0)
+            .attr('width', 50)
+            .attr('height', 50)
+            .attr('fill', 'green');
+
+        const circle = svg.append('circle')
+        circle.attr('cx', 90)
+            .attr('cy', 25)
+            .attr('r', 25)
+            .attr('fill', 'red')
+
+        svg.append('ellipse').attr('cx', 145).attr('cy', 30).attr('rx', 15).attr('ry', 25).attr('fill', 'gray')
+    </script>
+</body>
+</html>
