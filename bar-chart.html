@@ -11,15 +11,16 @@
     <script>
 
         const  getRandomColor = () => {
-        var letters = '0123456789ABCDEF';
-        var color = '#';
-        for (var i = 0; i < 6; i++) {
-            color += letters[Math.floor(Math.random() * 16)];
+            var letters = '0123456789ABCDEF';
+            var color = '#';
+            for (var i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
         }
-        return color;
-        }
-        d3.json('buildings.json').then(data => {
-            console.log({data})
+
+        (async () => {
+            const data = await d3.json('buildings.json');
             const max = Math.max(...data.map(x=>x.height))
             const svg = d3.select('.container').append('svg').attr('width', 500).attr('height', 500);
             const rects = svg.selectAll('rect').data(data)
@@ -29,8 +30,20 @@
                 .attr('width', 25)
                 .attr('height', (d, _i)=> d.height)
                 .attr('fill', getRandomColor)
+        })()
 
-        })
+        // d3.json('buildings.json').then(data => {
+        //     const max = Math.max(...data.map(x=>x.height))
+        //     const svg = d3.select('.container').append('svg').attr('width', 500).attr('height', 500);
+        //     const rects = svg.selectAll('rect').data(data)
+        //     rects.enter().append('rect')
+        //         .attr('x', (d, i) => (i*40))
+        //         .attr('y', (d, i)=> max-Number(d.height))
+        //         .attr('width', 25)
+        //         .attr('height', (d, _i)=> d.height)
+        //         .attr('fill', getRandomColor)
+
+        // })
     </script>
 </body>
 </html>
