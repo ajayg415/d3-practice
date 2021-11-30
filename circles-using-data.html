@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+<head>
+</head>
+<body>
+    <div class="container"></div>
+
+	<!-- External JS libraries -->
+	<script src="https://d3js.org/d3.v5.min.js"></script>
+    <script>
+        const data = [5, 10, 15, 20, 25];
+        const svg = d3.select('.container').append('svg').attr('width', '90%').attr('height', 100);
+        const circles = svg.selectAll('circle').data(data)
+        circles.enter().append('circle')
+            .attr('cx', (d, i) => (50*i)+50)
+            .attr('cy', 60)
+            .attr('r', (d, _i) => d)
+            .attr('fill', 'red')
+    </script>
+</body>
+</html>
